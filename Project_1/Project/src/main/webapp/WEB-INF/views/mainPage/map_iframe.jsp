@@ -136,7 +136,7 @@
              
              
             $(".step_map_city1,button[data-city='step_map_city1']").click(function(){
-                
+
                $(".map_info p").remove();
                $(".map_info").append("<p>서울 임대 정보</p>")
             });
@@ -253,7 +253,6 @@
              
              
             $(".step_map_city16,button[data-city='step_map_city16']").click(function(){
-                
                $(".map_info p").remove();
                $(".map_info").append("<p>경남 임대 정보</p>")
             });
@@ -339,7 +338,7 @@
     
     <div class="rssm_graph">
 
-            <button type="button" data-city="step_map_city1"><span class="name">서울특별시</span></button>
+            <button type="button" data-city="step_map_city1" value="1"><span class="name">서울특별시</span></button>
             <button type="button" data-city="step_map_city2"><span class="name">부산광역시</span></button>
             <button type="button" data-city="step_map_city3"><span class="name">대구광역시</span></button>
             <button type="button" data-city="step_map_city4"><span class="name">인천광역시</span></button>

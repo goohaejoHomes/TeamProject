@@ -6,6 +6,7 @@
 
 <!-- JQuery 라이브러리 import 하기 -->
 <script src="/resources/js/jquery-1.11.0.min.js"></script>
+<script src="/resources/js/common_func.js"></script>
 
 
 
@@ -16,8 +17,118 @@ function goMypage(){
 	document.modify_info.submit();
     };
 
+    
+
+    function check_overlap_nickname() {
+    	if($(".nickname").val()==""){
+    		alert("닉네임을 입력해주세요.");
+    		return;
+    	} 
+    	$.ajax({
+    			url : "/overlapNicknameProc.do"
+    			,type : "post"
+    			,data : $("[name='modify_info']").serialize()
+    			, success : function(nicknameCnt) {
+    				if(nicknameCnt==1){
+    				alert("닉네임이 중복됩니다.");
+    				$(".idCheckCnt").val("0");
+    				return;
+      	   			}else{
+    				alert("사용가능한 닉네임입니다.");
+    				return;
+      	   	   		}
+    			}
+    			, error : function() {
+    				alert("서버 접속 실패")
+    			}
+    	 });
+      		
+      	}
+    
+    
+    
+    
 
 $(document).ready(function(){
+	
+	// 닉네임 중복체크 클릭 시
+	$(".overlap_nickname").click(function(){
+		//$(".nicknameCheckCnt").val("1");
+		check_overlap_nickname();
+	});
+
+
+	//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+	// 유효성 체크 함수
+	//mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+	$(".nickname").focusout(function(){
+		if($(".nickname").val()==""){
+			$("#nickname_check").text("[필수]닉네임을 입력해주세요.");
+			$(".nickname").val("");
+			return;
+		}
+		if(isCheck_Home($(".nickname").val()) == false) {
+			$("#nickname_check").text("닉네임은 2-20자 사이입니다.");
+			return;
+		}else{
+			$("#nickname_check").text("");
+		}
+	})
+//---------------------------------------------------------------
+	$(".mem_pwd").focusout(function(){
+		if($(".mem_pwd").val()==""){
+			$("#pwd_check").text("[필수]비밀번호를 입력해주세요.");
+			return;
+		}
+		if(is_pwd($(".mem_pwd").val()) == false) {
+			$("#pwd_check").text("비밀번호는 특수문자 포함 8~16자 사이입니다.");
+			return;
+		}else{
+			$("#pwd_check").text("");
+		}
+	})
+	
+	$(".re_pwd").focusout(function(){
+		if($(".re_pwd").val()==""){
+			$("#re_pwd_check").text("비밀번호 재확인을 입력해주세요.");
+			return;
+		}
+		if($(".mem_pwd").val()!=$(".re_pwd").val()) {
+			$("#re_pwd_check").text("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
+			return;
+		}else{
+			$("#re_pwd_check").text("");
+		}
+	})
+	
+	$(".phone").focusout(function(){
+		if($(".phone").val()==""){
+			$("#phone_check").text("[필수]휴대폰번호를 입력해주세요.");
+			return;
+		}
+		if(is_Phone($(".phone").val()) == false) {
+			$("#phone_check").text("[필수]휴대폰 입력 형식이 맞지 않습니다.");
+			return;
+		}else{
+			$("#phone_check").text("");
+		}
+	})
+	
+	$(".email").focusout(function(){
+		if($(".email").val()==""){
+			$("#email_check").text("[필수]이메일을 입력해주세요.");
+			return;
+		}
+		if(is_Phone($(".email").val()) == false) {
+			$("#email_check").text("[필수]이메일 입력 형식이 맞지 않습니다.");
+			return;
+		}else{
+			$("#email_check").text("");
+		}
+	})
+	
+	
+	
 	$(".modify_Member_Info").click(function(){
 		alert("개인 정보를 수정하시겠습니까?");
 
@@ -55,7 +166,8 @@ $(document).ready(function(){
 		<TD>이름</TD>
 		<TD>${myPageList.mem_name}</TD>
 		<TD>전화번호</TD>
-		<TD><input type="text" name="phone" class="phone" value="${myPageList.phone}"></TD>
+		<TD><input type="text" name="phone" class="phone" value="${myPageList.phone}">
+		<div id=phone_check></div></TD>
 	</TR>
 
 	<TR>
@@ -67,16 +179,19 @@ $(document).ready(function(){
 
 	<TR>
 		<TD>닉네임</TD>
-		<TD><input type="text" name="nickname" class="nickname" value="${myPageList.nickname}"></TD>
+		<TD><input type="text" name="nickname" class="nickname" value="${myPageList.nickname}">
+		<input type="button" name="overlap_nickname" class="overlap_nickname" value="중복체크">
+			<div id=nickname_check></div></TD>
 		<TD>생일</TD>
 		<TD>${myPageList.birth_day}</TD>
 	</TR>
 	
 	<TR>
 		<TD>비밀번호</TD>
-		<TD><input type="password" name="mem_pwd" class="mem_pwd" value="${myPageList.mem_pwd}"></TD>
+		<TD><input type="password" name="mem_pwd" class="mem_pwd" value="${myPageList.mem_pwd}">
+			<div id=pwd_check></div></TD>
 		<TD>비밀번호 재확인</TD>
-		<TD><input type="password" class="re_pwd"></TD>
+		<TD><input type="password" class="re_pwd"><div id=re_pwd_check></div></TD>
 	</TR>
 	
 	</TABLE> <br><br>

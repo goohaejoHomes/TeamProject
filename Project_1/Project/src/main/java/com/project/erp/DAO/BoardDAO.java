@@ -50,5 +50,7 @@ public interface BoardDAO {
 
 	int deleteComment(CommentDTO commentDTO);
 
+	int deleteBComment(BoardDTO boardDTO);
+
 	
 }

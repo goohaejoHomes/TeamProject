@@ -55,8 +55,8 @@ public class LoginController {
 			, HttpSession session
 			, HttpServletResponse response)
 		{
-			System.out.println(login_id);
-			System.out.println(pwd);
+			//System.out.println(login_id);
+			//System.out.println(pwd);
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("login_id", login_id);
 		map.put("pwd", pwd);
@@ -68,8 +68,8 @@ public class LoginController {
 			int is_admin = this.loginDAO.getIs_admin(map);
 			int get_mem_no = this.loginDAO.getMem_no(map);
 
-			System.out.println("is_admin"+is_admin);
-			System.out.println("mem_no"+get_mem_no);
+//			System.out.println("is_admin"+is_admin);
+//			System.out.println("mem_no"+get_mem_no);
 
 			session.setAttribute("is_admin",is_admin);   
 			session.setAttribute("mem_no",get_mem_no);
@@ -165,7 +165,7 @@ public class LoginController {
 		
 	
 		int check_pwdCnt = this.loginDAO.getCheck_pwdCnt(map);
-		System.out.println(check_pwdCnt);
+		//System.out.println(check_pwdCnt);
 		String checkedPwd ="";
 		
 		if(check_pwdCnt == 1) {
@@ -215,7 +215,7 @@ public class LoginController {
 		
 	
 		int check_idCnt = this.loginDAO.getCheck_IdCnt(map);
-		System.out.println(check_idCnt);
+		//System.out.println(check_idCnt);
 		String checkedId ="";
 		
 		if(check_idCnt == 1) {
@@ -240,11 +240,11 @@ public class LoginController {
 		@ResponseBody
 		public int insertMember(MemberDTO memberDTO) {
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-		System.out.println("insertMember => " + memberDTO.getBirth_day());
+		//System.out.println("insertMember => " + memberDTO.getBirth_day());
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 		int memRegCnt = this.loginDAO.insertMember(memberDTO);
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-		System.out.println("memRegCnt => " + memRegCnt);
+		//System.out.println("memRegCnt => " + memRegCnt);
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 		return memRegCnt;
 		

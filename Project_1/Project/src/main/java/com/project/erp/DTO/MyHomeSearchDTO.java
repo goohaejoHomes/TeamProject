@@ -14,6 +14,7 @@ public class MyHomeSearchDTO {
 	private String state; 
 	private String rent_deposit;
 	private String move_date;
+	private String first_move_date;
 	//에러 방지를 위해 default값을 먼저 주고 시작
 	//location.reaplace로 처음 들어올때 아무런 파라미터도 가지고 오지 않기 때문에
 	//처음에 아무것도 검색이 되지 않음 그렇기 때문에 default값을 넣어주어야함
@@ -84,6 +85,12 @@ public class MyHomeSearchDTO {
 	}
 	public void setTarget_code(String target_code) {
 		this.target_code = target_code;
+	}
+	public String getFirst_move_date() {
+		return first_move_date;
+	}
+	public void setFirst_move_date(String first_move_date) {
+		this.first_move_date = first_move_date;
 	}
 	
 	

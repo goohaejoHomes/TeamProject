@@ -14,8 +14,8 @@ public interface BoardService {
 
 	int insertBoard(BoardDTO boardDTO, MultipartFile multi) throws Exception;
 
-
 	int deleteBoard(BoardDTO boardDTO);
+
 
 	int updateBoard(BoardDTO boardDTO, MultipartFile multi) throws Exception;
 

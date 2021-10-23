@@ -1,7 +1,6 @@
 package com.project.erp.Controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.erp.DAO.LoginDAO;
 import com.project.erp.DAO.MainDAO;
 import com.project.erp.DTO.MemberDTO;
-import com.project.erp.DTO.MainInfoDTO;
 
 @Controller
 public class MainController {
@@ -40,18 +38,10 @@ public class MainController {
 	//---------------------------
 
 	@RequestMapping(value="/main.do")
-	public ModelAndView MainForm(			
-			@RequestParam(value="loc_no"	
-			,required=false
-			,defaultValue="0"
-			)  int loc_no) {
-		List<MainInfoDTO> mapInfoOut = this.mainDAO.getMapOutList(loc_no);
-
-		System.out.println(mapInfoOut.size());
+	public ModelAndView MainForm() {
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("mainPage/main.jsp");
-
-		mav.addObject("mapInfoOut", mapInfoOut);
 		return mav;
 	}
 
@@ -103,7 +93,7 @@ public class MainController {
 	public ModelAndView CheckRental() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("selfDiagnosis/checkRental.jsp");
+		mav.setViewName("selfDiagnosis/CheckRental.jsp");
 		return mav;
 		
 	}
@@ -115,7 +105,7 @@ public class MainController {
 			public ModelAndView MyPage(
 					@RequestParam(value="mem_no") int mem_no
 			) {
-				System.out.println("넘어온 데이터"+mem_no);
+				//System.out.println("넘어온 데이터"+mem_no);
 				MemberDTO myPageList = this.mainDAO.getMyPageList(mem_no);
 				ModelAndView mav = new ModelAndView();
 				mav.setViewName("mainPage/mypage.jsp");
@@ -225,8 +215,8 @@ public class MainController {
 						@RequestParam(value="mem_no") String mem_no,
 						@RequestParam(value="pwd_chk") String pwd_chk)
 				{
-					System.out.println(mem_no);
-					System.out.println(pwd_chk);
+					//System.out.println(mem_no);
+					//System.out.println(pwd_chk);
 					Map<String,String> map = new HashMap<String,String>();
 					map.put("mem_no", mem_no);
 					map.put("pwd_chk", pwd_chk);
@@ -238,7 +228,7 @@ public class MainController {
 					}else {
 						deleteMemberCnt = -2;//비밀번호 일치하지 않음
 					}
-					System.out.println(deleteMemberCnt);
+					//System.out.println(deleteMemberCnt);
 					
 				return deleteMemberCnt;
 			}

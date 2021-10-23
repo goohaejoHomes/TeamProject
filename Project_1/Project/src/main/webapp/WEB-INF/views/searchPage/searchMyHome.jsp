@@ -163,11 +163,7 @@ function search_with_changePageNo( selectPageNo ){
 }
 
 $(document).ready(function(){
-	var loc_no= ${loc_no};
-	$(".loc_no[value='"+loc_no+"']").prop('selected',true);
-	search();
-	
-	
+
 	$(".rowCntPerPage").change(function(){
 		$(".selectPageNo").val("1");
 		search();
@@ -224,7 +220,7 @@ $(document).ready(function(){
 <header></header>
 <div class="wrap">
 <br/><br/><br/><br/>
-<form name="getLocDetailList">
+<form name="getLocDetailList" method="post">
 	<input type="hidden" name="xxx" id="yyy">
 </form>
 

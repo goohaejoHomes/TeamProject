@@ -233,6 +233,15 @@ public class BoardDAOImpl implements BoardDAO  {
 				);
 		return deleteCommentCnt;
 	}
+	
+	@Override
+	public int deleteBComment(BoardDTO boardDTO) {
+		int deleteCommentCnt = this.sqlSession.delete(
+				"com.project.erp.DAO.BoardDAO.deleteBComment"
+				,boardDTO
+				);
+		return deleteCommentCnt;
+	}
 
 
 

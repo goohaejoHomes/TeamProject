@@ -22,12 +22,10 @@
 
 	$(document).ready(function() {
 		$(".overlap_id").click(function(){
-			$(".idCheckCnt").val("1");
 			check_overlap_id();
 		
 		});
 		$(".overlap_nickname").click(function(){
-			$(".nicknameCheckCnt").val("1");
 			check_overlap_nickname();
 		});
 
@@ -282,10 +280,11 @@
    					if(idCnt==1){
 						alert("아이디가 중복됩니다.");
 						$(".mem_id").val('');
-						$(".nicknameCheckCnt").val("0");
+						$(".idCheckCnt").val("0");
 						reuturn;
    					}else{
 						alert("사용가능한 아이디입니다.");
+						$(".idCheckCnt").val("1");
 						reuturn;
    	   	   	   		}
    				}
@@ -308,11 +307,12 @@
    				, success : function(nicknameCnt) {
    					if(nicknameCnt==1){
 						alert("닉네임이 중복됩니다.");
-						$(".idCheckCnt").val("0");
+						$(".nicknameCheckCnt").val("0");
 						$(".nickname").val('');
 						return;
    	   	   			}else{
 						alert("사용가능한 닉네임입니다.");
+						$(".nicknameCheckCnt").val("1");
 						return;
    	   	   	   		}
    				}

@@ -183,7 +183,7 @@
 		<form name="boardRegForm" method="post" action="/boardRegProc.do" >
 		
 		<!-- 테스트용 mem_no-->
-		<input type="hidden" name="mem_no" value="10">
+		<input type="hidden" name="mem_no" value="${sessionScope.mem_no}">
 			<table border=1 class="tbcss2" width=800>
 			 		<caption><b>새글쓰기</b></caption>	
 			

@@ -13,7 +13,6 @@
 <!-- JQuery 라이브러리 수입하기 -->
 <!-- css 파일 수입하기 -->
 <!-- --------------------------------------------- -->
-<script src="/resources/js/common.js"></script>
 <script src="/resources/js/jquery-1.11.0.min.js"></script>
 <link href="/resources/css/common.css" rel="stylesheet" type="text/css" >
 

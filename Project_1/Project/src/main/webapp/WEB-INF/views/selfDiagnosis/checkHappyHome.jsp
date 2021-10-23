@@ -11,7 +11,7 @@
 	<script src="/resources/js/checkHappyHome.js"></script>
 </head>
 <body>
-<header></header> 
+<header></header> <br/><br/><br/><br/>
 <div class="question q1 on">
             <h2>1. 자신에게 맞는 계층을 선택해주세요</h2>
             <input type="radio" name="grade" class="grade" id="sub_uni" value="대학생">

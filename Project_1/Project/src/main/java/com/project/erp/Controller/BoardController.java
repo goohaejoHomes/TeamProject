@@ -264,7 +264,7 @@ public class BoardController {
 			,CommentDTO commentDTO
 			
 			) {
-		System.out.println(commentDTO.getCom_contents()); // 시발 너 왜 널이냐고 좆같은새끼야
+		//System.out.println(commentDTO.getCom_contents()); 
 		
 		// 댓글 총 개수 가져오기
 		int CommentAllCnt = this.boardDAO.getCommentListAllCnt(commentDTO);
@@ -401,7 +401,6 @@ public class BoardController {
 			//+++++++++++++++++++++++++++++++++++++++++++++++++
 			, BindingResult bindingResult
 		) throws Exception {
-		
 		//----------------------------------------------------
 		//업로드 된 파일의 크기와 확장자 체크하기
 		//----------------------------------------------------
@@ -414,7 +413,7 @@ public class BoardController {
 				map.put("msg", "업로드 파일이 1000kb보다 크면 안됩니다.");
 				return map; // return이 나오면 메소드 중단, 오른쪽에 값이 있으면 메소드 호출한 쪽으로 던져줌
 			}
-			
+
 			//만약에 업로드된 파일의 확장자가 이미지 확장자가 아니면
 			String fileName=multi.getOriginalFilename();
 			
@@ -426,7 +425,6 @@ public class BoardController {
 			}
 		}
 		
-		
 		int boardUpDelCnt =0;
 		//유효성 체크 에러 메시지를 저장할 변수 msg 선언
 		String msg = "";
@@ -435,6 +433,7 @@ public class BoardController {
 		//수정 실행하고 수정 적용행의 개수 얻기
 		//----------------------------------------------------
 		if(upDel.equals("up")) {
+
 			//----------------------------------------------------
 			//check_BoardDTO 메소드를 호출하여 [유효성 체크]를 하고 경고문자 얻기
 			//유효성확인에 실패하면 DB연동을 할 수 없음
@@ -465,11 +464,13 @@ public class BoardController {
 		//만약 게시판 삭제 모드면 => 유효성검사 필요없음
 		//----------------------------------------------------
 		else if(upDel.equals("del")) {
+
 			//----------------------------------------------------
 			//[BoardServiceImpl 객체]의 deleteBoard 메소드 호출로
 			//삭제 실행하고 [삭제 적용행의 개수] 얻기
 			//----------------------------------------------------
 			boardUpDelCnt = this.boardService.deleteBoard(boardDTO);
+
 		}
 		
 		//*******************************************
@@ -508,7 +509,7 @@ public class BoardController {
 		CommentDTO commentDTO 
 
 	) {
-		System.out.println(commentDTO.getCom_no());
+		//System.out.println(commentDTO.getCom_no());
 		//----------------------------------------------------
 		//업로드 된 파일의 크기와 확장자 체크하기
 		//----------------------------------------------------
@@ -542,10 +543,10 @@ public class BoardController {
 		, @RequestParam(value="com_no") int com_no
 	) {
 		commentDTO.setCom_no(com_no);
-		System.out.println("컨트롤러 삭제 시작");		
+		//System.out.println("컨트롤러 삭제 시작");		
 			// 삭제 실행하고 삭제 적용행의 개수 얻기
 		 int commentDelCnt = this.boardService.deleteComment(commentDTO);
-		System.out.println("컨트롤러 삭제 끝");
+		//System.out.println("컨트롤러 삭제 끝");
 		return commentDelCnt;
 	}
 

@@ -214,6 +214,8 @@ public class BoardServiceImpl implements BoardService  {
 		
 		String pic = this.boardDAO.getPic(boardDTO);
 		
+		
+		int deleteComment = this.boardDAO.deleteBComment(boardDTO);
 		int deleteCnt = this.boardDAO.deleteBoard(boardDTO);
 		System.out.println("deleteCnt : "+deleteCnt);
 		if(pic!=null&&pic.length()>0) {
