@@ -37,6 +37,16 @@ public interface MyHomeDAO {
 
 	int insertHome(MyHomeDTO myhomeDTO);
 
+	int insertTarget(String target_codeList);
+
+	int insertHomeDetailCnt(MyHomeDTO myHomeDTO);
+
+	List<MyHomeDTO> getXxxTargetCode(int rental_no);
+
+	int deleteTarget(MyHomeDTO myHomeDTO);
+
+
+
 
 
 

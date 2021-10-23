@@ -163,10 +163,7 @@ function search_with_changePageNo( selectPageNo ){
 }
 
 $(document).ready(function(){
-	var loc_no= ${loc_no};
-	$(".loc_no[value='"+loc_no+"']").prop('selected',true);
-	search();
-	
+
 	$(".rowCntPerPage").change(function(){
 		$(".selectPageNo").val("1");
 		search();
@@ -228,9 +225,7 @@ $(document).ready(function(){
 </form>
 
 <center class="center_position">
-
 <section>
-	
 	<form name="myHomeSearchForm" method="post" onSubmit="return false">
 	<table border=1 cellpadding=5 class="tbcss2">
 		<tr><th colspan="6"><b>공공 주택 검색</b>

@@ -1,7 +1,6 @@
 package com.project.erp.Controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.erp.DAO.LoginDAO;
 import com.project.erp.DAO.MainDAO;
 import com.project.erp.DTO.MemberDTO;
-import com.project.erp.DTO.MainInfoDTO;
 
 @Controller
 public class MainController {
@@ -40,18 +38,10 @@ public class MainController {
 	//---------------------------
 
 	@RequestMapping(value="/main.do")
-	public ModelAndView MainForm(			
-			@RequestParam(value="loc_no"	
-			,required=false
-			,defaultValue="0"
-			)  int loc_no) {
-		List<MainInfoDTO> mapInfoOut = this.mainDAO.getMapOutList(loc_no);
+	public ModelAndView MainForm() {
 		
-		System.out.println(mapInfoOut.size());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("mainPage/main.jsp");
-
-		mav.addObject("mapInfoOut", mapInfoOut);
 		return mav;
 	}
 
@@ -62,7 +52,7 @@ public class MainController {
 		mav.setViewName("mainPage/map_iframe.jsp");
 		return mav;
 	}
-/*
+
 	@RequestMapping(value="/admin_page.do")
 	public ModelAndView admin() {
 		
@@ -70,7 +60,7 @@ public class MainController {
 		mav.setViewName("admin/admin_page.jsp");
 		return mav;
 	}
-	*/
+	
 	@RequestMapping(value="/info.do")
 	public ModelAndView Info() {
 		

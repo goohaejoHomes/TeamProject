@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.project.erp.DTO.BoardDTO;
 import com.project.erp.DTO.BoardSearchDTO;
-import com.project.erp.DTO.MainInfoDTO;
 import com.project.erp.DTO.MemberDTO;
 import com.project.erp.DTO.MyHomeDTO;
 
@@ -64,15 +63,6 @@ public class MainDAOImpl implements MainDAO  {
 				, mem_no
 				);
 		return deleteMemberCnt;
-	}
-
-	@Override
-	public List<MainInfoDTO> getMapOutList(int loc_no) {
-		List<MainInfoDTO> mapInfoOut = this.sqlSession.selectList(
-				"com.project.erp.DAO.MainDAO.getMapOutList"
-				,loc_no
-			);
-		return mapInfoOut;
 	}
 
 

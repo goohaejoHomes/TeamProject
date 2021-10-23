@@ -211,9 +211,9 @@
 			, type : "post"
 			, data : $("[name=myHomeRegForm]").serialize()  	
 			, success : function(insertCnt) {
-					if(insertCnt == 2) {
+					if(insertCnt == 1) {
 						alert("주택등록 성공")
-						location.replace("/main.do")
+						location.replace("/searchMyHome.do")
 					}
 					else {
 						alert("주택등록 실패")
@@ -315,6 +315,13 @@
 						</select>
 				</div>
 				<div id="supply_type_no_check"></div>
+			</div>
+	
+			<div>
+			<div>공급대상 &nbsp;
+				<input type="checkbox" name="target_codeList" value="1"> 대학생
+				<input type="checkbox" name="target_codeList" value="2"> 신혼부부
+			</div>
 			</div>
 			<div>
 				<div>월임대료 &nbsp;<input type="text" id="month_rent" name="month_rent" class="month_rent"> 원</div>

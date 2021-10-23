@@ -11,5 +11,7 @@ import com.project.erp.DTO.MyHomeDTO;
 public interface MyHomeService {
 
 	int updateMyHome(MyHomeDTO myHomeDTO);
+	int insertHome(MyHomeDTO myHomeDTO);
+	int deleteMyHome(MyHomeDTO myHomeDTO);
 
 }

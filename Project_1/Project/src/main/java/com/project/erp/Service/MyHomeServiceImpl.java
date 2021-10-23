@@ -26,9 +26,35 @@ public class MyHomeServiceImpl implements MyHomeService  {
 
 	@Override
 	public int updateMyHome(MyHomeDTO myHomeDTO) {
+		int deleteTargetCnt =this.myHomeDAO.deleteTarget(myHomeDTO);
 		int updateRentalCnt = this.myHomeDAO.updateRental(myHomeDTO);
 		int myHomeUpDelCnt = this.myHomeDAO.updateRentalDetail(myHomeDTO);
+		List<String> target_codeList = myHomeDTO.getTarget_codeList();
+		for(int i = 0; i<target_codeList.size(); i++) {
+			int targetCnt = this.myHomeDAO.insertTarget(target_codeList.get(i));
+		}
 		return myHomeUpDelCnt;
 	}
+
+	@Override
+	public int insertHome(MyHomeDTO myHomeDTO) {
+		int homeRegCnt = this.myHomeDAO.insertHome(myHomeDTO);
+
+			int insertHomeDetailCnt = this.myHomeDAO.insertHomeDetailCnt(myHomeDTO);
+			List<String> target_codeList = myHomeDTO.getTarget_codeList();
+			for(int i = 0; i<target_codeList.size(); i++) {
+				int targetCnt = this.myHomeDAO.insertTarget(target_codeList.get(i));
+			}
+		return homeRegCnt;
+	}
+
+	@Override
+	public int deleteMyHome(MyHomeDTO myHomeDTO) {
+		int deleteTargetCnt =this.myHomeDAO.deleteTarget(myHomeDTO);
+		int deleteMyHomeCnt = this.myHomeDAO.deleteMyHome(myHomeDTO);
+		return deleteMyHomeCnt;
+	}
+
+
 
 }

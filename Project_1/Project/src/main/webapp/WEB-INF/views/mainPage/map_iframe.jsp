@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+ 
     <script src="/resources/js/jquery-1.11.0.min.js"></script>
-    
          <script>
 
          $(document).ready(function(){
-            
-        	 
+             
             $(".step_map_city1,button[data-city='step_map_city1']").hover(function(){
                $(".step_map_city1").attr("fill","#ccffcc") 
             },function(){
@@ -129,26 +125,25 @@
              
              
              /*클릭이벤트*/
+             
+              
             $("#map_back").click(function(){
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>전국 임대 정보</p>");
-
-            });           
+                
+            });
+             
              
             $(".step_map_city1,button[data-city='step_map_city1']").click(function(){
-               var a = $("button[data-city='step_map_city1']").val()
-               $("[name=loc_no]").val(a);
-               
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>서울 임대 정보</p>")
-               mainOutList();
             });
             
              
              
             $(".step_map_city2,button[data-city='step_map_city2']").click(function(){
-                var a = $("button[data-city='step_map_city2']").val()
-                $("[name=clicked_loc]").val(a);
                 
                $(".map_info p").remove();
                $(".map_info").append("<p>부산 임대 정보</p>")
@@ -157,9 +152,7 @@
              
              
             $(".step_map_city3,button[data-city='step_map_city3']").click(function(){
-                var a = $("button[data-city='step_map_city3']").val()
-                $("[name=clicked_loc]").val(a);
-  
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>대구 임대 정보</p>")
             });
@@ -167,9 +160,7 @@
              
              
             $(".step_map_city4,button[data-city='step_map_city4']").click(function(){
-                var a = $("button[data-city='step_map_city4']").val()
-                $("[name=clicked_loc]").val(a);
- 
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>인천 임대 정보</p>")
             });
@@ -177,9 +168,7 @@
              
              
             $(".step_map_city5,button[data-city='step_map_city5']").click(function(){
-                var a = $("button[data-city='step_map_city5']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>광주 임대 정보</p>")
             });
@@ -187,9 +176,7 @@
              
              
             $(".step_map_city6,button[data-city='step_map_city6']").click(function(){
-                var a = $("button[data-city='step_map_city6']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>대전 임대 정보</p>")
             });
@@ -197,9 +184,7 @@
              
              
             $(".step_map_city7,button[data-city='step_map_city7']").click(function(){
-                var a = $("button[data-city='step_map_city7']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>울산 임대 정보</p>")
             });
@@ -207,9 +192,7 @@
              
              
             $(".step_map_city8,button[data-city='step_map_city8']").click(function(){
-                var a = $("button[data-city='step_map_city8']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>세종 임대 정보</p>")
             });
@@ -217,36 +200,28 @@
              
              
             $(".step_map_city9,button[data-city='step_map_city9']").click(function(){
-                var a = $("button[data-city='step_map_city9']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>경기 임대 정보</p>")
             });
              
              
             $(".step_map_city10,button[data-city='step_map_city10']").click(function(){
-                var a = $("button[data-city='step_map_city10']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>강원 임대 정보</p>")
             });
              
         
             $(".step_map_city11,button[data-city='step_map_city11']").click(function(){
-                var a = $("button[data-city='step_map_city11']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>충북 임대 정보</p>")
             });
              
              
             $(".step_map_city12,button[data-city='step_map_city12']").click(function(){
-                var a = $("button[data-city='step_map_city12']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>충남 임대 정보</p>")
             });            
@@ -254,9 +229,7 @@
              
              
             $(".step_map_city13,button[data-city='step_map_city13']").click(function(){
-                var a = $("button[data-city='step_map_city13']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>전북 임대 정보</p>")
             });            
@@ -264,9 +237,7 @@
              
              
             $(".step_map_city14,button[data-city='step_map_city14']").click(function(){
-                var a = $("button[data-city='step_map_city14']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>전남 임대 정보</p>")
             });            
@@ -274,9 +245,7 @@
              
              
             $(".step_map_city15,button[data-city='step_map_city15']").click(function(){
-                var a = $("button[data-city='step_map_city15']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>경북 임대 정보</p>")
             });            
@@ -284,9 +253,7 @@
              
              
             $(".step_map_city16,button[data-city='step_map_city16']").click(function(){
-                var a = $("button[data-city='step_map_city16']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove();
                $(".map_info").append("<p>경남 임대 정보</p>")
             });
@@ -295,34 +262,14 @@
              
              
             $(".step_map_city17,button[data-city='step_map_city17']").click(function(){
-                var a = $("button[data-city='step_map_city17']").val()
-                $("[name=clicked_loc]").val(a);
-            	
+                
                $(".map_info p").remove(); 
                $(".map_info").append("<p>제주 임대 정보</p>")
             });
             
+             
+             
         });
-        
-function mainOutList(){
-	$.ajax({
-		url: "/main.do"
-		, type :"post"
-		, data: $("[name=mapInfoForm]").serialize()  
-		, success: function(responseHtml){
-			$(".xxx").html(
-				 $(responseHtml).find(".xxx").html()
-				);
-
-		}
-		,error: function(){
-			alert("서버 접속 실패");
-		}
-	});
-	
-}
-
-        
 </script>
     <style>
         .rssm_graph{
@@ -390,29 +337,25 @@ function mainOutList(){
         
     </style>
     
-
     <div class="rssm_graph">
-	    <form name="mapInfoForm">
-	    	<input type="text" name="loc_no" class="loc_no">
-	    </form>
-	    
-            <button type="button" data-city="step_map_city1" value="1"><span class="name">서울특별시</span></button>
-            <button type="button" data-city="step_map_city2" value="2"><span class="name">부산광역시</span></button>
-            <button type="button" data-city="step_map_city3" value="3"><span class="name">대구광역시</span></button>
-            <button type="button" data-city="step_map_city4" value="4"><span class="name">인천광역시</span></button>
-            <button type="button" data-city="step_map_city5" value="5"><span class="name">광주광역시</span></button>
-            <button type="button" data-city="step_map_city6" value="6"><span class="name">대전광역시</span></button>
-            <button type="button" data-city="step_map_city7" value="7"><span class="name">울산광역시</span></button>
-            <button type="button" data-city="step_map_city8" value="8"><span class="name">세종특별자치시</span></button>
-            <button type="button" data-city="step_map_city9" value="9"><span class="name">경기도</span></button>
-            <button type="button" data-city="step_map_city10" value="10"><span class="name">강원도</span></button>
-            <button type="button" data-city="step_map_city11" value="11"><span class="name">충청북도</span></button>
-            <button type="button" data-city="step_map_city12" value="12"><span class="name">충청남도</span></button>
-            <button type="button" data-city="step_map_city13" value="13"><span class="name">전라북도</span></button>
-            <button type="button" data-city="step_map_city14" value="14"><span class="name">전라남도</span></button>
-            <button type="button" data-city="step_map_city15" value="15"><span class="name">경상북도</span></button>
-            <button type="button" data-city="step_map_city16" value="16"><span class="name">경상남도</span></button>
-            <button type="button" data-city="step_map_city17" value="17"><span class="name">제주도</span></button>
+
+            <button type="button" data-city="step_map_city1"><span class="name">서울특별시</span></button>
+            <button type="button" data-city="step_map_city2"><span class="name">부산광역시</span></button>
+            <button type="button" data-city="step_map_city3"><span class="name">대구광역시</span></button>
+            <button type="button" data-city="step_map_city4"><span class="name">인천광역시</span></button>
+            <button type="button" data-city="step_map_city5"><span class="name">광주광역시</span></button>
+            <button type="button" data-city="step_map_city6"><span class="name">대전광역시</span></button>
+            <button type="button" data-city="step_map_city7"><span class="name">울산광역시</span></button>
+            <button type="button" data-city="step_map_city8"><span class="name">세종특별자치시</span></button>
+            <button type="button" data-city="step_map_city9"><span class="name">경기도</span></button>
+            <button type="button" data-city="step_map_city10"><span class="name">강원도</span></button>
+            <button type="button" data-city="step_map_city11"><span class="name">충청북도</span></button>
+            <button type="button" data-city="step_map_city12"><span class="name">충청남도</span></button>
+            <button type="button" data-city="step_map_city13"><span class="name">전라북도</span></button>
+            <button type="button" data-city="step_map_city14"><span class="name">전라남도</span></button>
+            <button type="button" data-city="step_map_city15"><span class="name">경상북도</span></button>
+            <button type="button" data-city="step_map_city16"><span class="name">경상남도</span></button>
+            <button type="button" data-city="step_map_city17"><span class="name">제주도</span></button>
             
           <div id="main_maplayout1">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="380px" height="480px" viewBox="0 0 400 530" enable-background="new 0 0 362 480" xml:space="preserve" tabindex="-1" focusable="false">
@@ -522,20 +465,9 @@ function mainOutList(){
                 </g>
             </svg>
         </div>
-        	    
-       <div class="xxx">
-	         <c:if test="${!empty mapInfoOut}">  
-	        <table>
-	        <tr> <th>단지명
-	        <c:forEach var="map" items="${mapInfoOut}">
-	        <tr><td>${map.complex_name}
-	        </c:forEach>
-	        </table>
-	        </c:if>
-	        </div>
-	    <div class="map_info">
-	        <p>전국 임대 정보</p>
-	        
-	        <button id="map_back">전체 다시보기</button>
-	    </div>
+    <div class="map_info">
+        <p>전국 임대 정보</p>
+           <button id="map_back">전체 다시보기</button>
+        
+    </div>
     </div>

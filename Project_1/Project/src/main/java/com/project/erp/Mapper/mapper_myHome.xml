@@ -229,11 +229,25 @@
 			)
 	</insert>
 	
-	
+	<insert id="insertTarget" parameterType="String">
+		insert into target(
+				target_grade_no
+				,rental_no
+				,target_code
+			) values (
+				(select nvl(max(target_grade_no),0)+1 from target)
+				,(select max(rental_no) from rental)
+				,#{target_codeList}
+			)
+	</insert>
 	
 
 	<delete id="deleteMyHome" parameterType="com.project.erp.DTO.MyHomeDTO">
           delete from rental_detail where rental_detail_no=#{rental_detail_no}
+	</delete>
+	 
+	<delete id="deleteTarget" parameterType="com.project.erp.DTO.MyHomeDTO">
+          delete from target where rental_no=#{rental_no}
 	</delete>
 	 
 	<update id="updateRental" parameterType="com.project.erp.DTO.MyHomeDTO">
@@ -258,5 +272,12 @@
 	    ,rent_deposit=<if test="!rent_deposit.equals('미정')">#{rent_deposit}</if><if test="rent_deposit.equals('미정')">0</if>
 	where rental_detail_no=#{rental_detail_no}
 	</update>
+	
+	<select id="getXxxTargetCode"  parameterType="int" resultType="com.project.erp.DTO.MyHomeDTO">
+		select t.rental_no "rental_no" ,rd.rental_detail_no "rental_detail_no", t.target_code "target_code"
+        from target t, rental_detail rd
+        where t.rental_no = rd.rental_no    
+            and t.rental_no=${rental_no}
+	</select>
 </mapper> 
 

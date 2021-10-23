@@ -274,23 +274,11 @@ function checkMyHomeUpDelForm(upDel){
 		// 즉 응답 메시지 안의 html 소스가 문자열로써 익명함수의 매개변수로 들어온다.
 		// 응답 메시지 안의 html 소스는 boardRegProc.jsp의 실행 결과물이다.
 		//--------------------------------------------				
-		, success: function (json) {
-			//-----------------------------------------
-			//JSON객체에서 유효성 체크 문자열 꺼내기
-			//JSON객체에서 수정/삭제 성공 행의 개수 꺼내기
-			//-----------------------------------------
-			var myHomeUpDelCnt = json.myHomeUpDelCnt;
-			myHomeUpDelCnt = parseInt(myHomeUpDelCnt,10);
+		, success: function (myHomeUpDelCnt) {
 			
-			var msg = json.msg;
-
 			//====================================================
 			if(upDel=="up"){
-				if(msg!=""&& msg.length>0){
-					alert(msg);
-					return;
-				}
-				
+								
 				if(myHomeUpDelCnt == -1){
 					alert("모집공고가 삭제되었습니다.");
 					location.replace("/searchMyHome.do");
@@ -358,7 +346,6 @@ function getLocDetailList(){
 	
 		<c:if test="${!empty requestScope.myHomeDTO}">
 		<form name="myHomeUpDelForm" class="myHomeUpDelForm">
-		
 		<h2 align="center">공공주택 수정/삭제 페이지</h2><br>
 			<div>
 				<div>단지명 &nbsp;<input type="text" id="complex_name" name="complex_name" class="complex_name" value="${myHomeDTO.complex_name}"></div>
@@ -373,7 +360,7 @@ function getLocDetailList(){
 				<div id="tot_house_num_check"></div>
 			</div>
 			<div>
-				<div>최초입주년월 &nbsp;<input type="text" id="IconDemo" name="first_move_date" class='Default first_move_date' value="${myHomeDTO.year_of_first_move_date}-${myHomeDTO.month_of_first_move_date}"></div>
+				<div>최초입주년월 &nbsp;<input type="text" id="IconDemo" name="move_date" class='Default first_move_date' value="${myHomeDTO.year_of_first_move_date}-${myHomeDTO.month_of_first_move_date}"></div>
 				<div id="first_move_date_check"></div>
 			</div>
 			<div>
@@ -414,6 +401,21 @@ function getLocDetailList(){
 						</select>
 				</div>
 				<div id="supply_type_no_check"></div>
+			</div>
+			<div>
+			<div>공급대상 &nbsp;
+				<input type="checkbox" name="target_codeList" value="1"
+				<c:forEach var="xxx" items="${xxxTargetCode}">
+					${xxx.target_code==1? 'checked':''}
+				</c:forEach>
+				> 대학생
+				<input type="checkbox" name="target_codeList" value="2"
+				<c:forEach var="xxx" items="${xxxTargetCode}">
+					${xxx.target_code==2? 'checked':''}
+				</c:forEach>
+				
+				> 신혼부부
+			</div>
 			</div>
 			<div>
 				<div>월임대료 &nbsp;<input type="text" id="month_rent" name="month_rent" class="month_rent"   value="${myHomeDTO.month_rent}"> 원</div>

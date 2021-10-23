@@ -132,31 +132,51 @@ public class MyHomeDAOImpl implements MyHomeDAO {
 
 	@Override
 	public int insertHome(MyHomeDTO myhomeDTO) {
-		int insertCnt = 0; 
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		System.out.println("MyHomeDAOImpl insertCnt => " + insertCnt);
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		int homeRegCnt = this.sqlSession.insert(
 				"com.project.erp.DAO.MyHomeDAO.insertHome"
 				,myhomeDTO
 		);
+		return homeRegCnt;
+				
+	}
+	
+	public int insertHomeDetailCnt(MyHomeDTO myhomeDTO) {
 		int homeRegDetailCnt = this.sqlSession.insert(
 				"com.project.erp.DAO.MyHomeDAO.insertDetailHome"
 				,myhomeDTO
 		);
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		System.out.println("MyHomeDAOImpl homeRegCnt => " + homeRegCnt);
-		System.out.println("MyHomeDAOImpl homeRegDetailCnt => " + homeRegDetailCnt);
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		insertCnt = homeRegCnt + homeRegDetailCnt;
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		System.out.println("MyHomeDAOImpl insertCnt => " + insertCnt);
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		return insertCnt;
-				
+		return homeRegDetailCnt;
 	}
-	
-	
+
+	@Override
+	public int insertTarget(String target_codeList) {
+		int intsertTargetCnt = this.sqlSession.insert(
+				"com.project.erp.DAO.MyHomeDAO.insertTarget"
+				,target_codeList
+		);
+		return intsertTargetCnt;
+	}
+
+	@Override
+	public List<MyHomeDTO> getXxxTargetCode(int rental_no) {
+		List<MyHomeDTO> xxxTargetCode = this.sqlSession.selectList(
+				"com.project.erp.DAO.MyHomeDAO.getXxxTargetCode"
+				,rental_no);
+		return xxxTargetCode;
+	}
+
+	@Override
+	public int deleteTarget(MyHomeDTO myHomeDTO) {
+		int deleteTargetCnt = this.sqlSession.delete(
+				"com.project.erp.DAO.MyHomeDAO.deleteTarget"
+				, myHomeDTO);
+		return deleteTargetCnt;
+	}
+
+
+
+
+
 
 	
 }

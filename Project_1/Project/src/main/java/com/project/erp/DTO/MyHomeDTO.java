@@ -27,9 +27,13 @@ public class MyHomeDTO {
 	private String year_of_first_move_date;
 	private String month_of_first_move_date;
 	private String first_move_date;
+	private String move_date;
 	private String month_rent;
 	private String dedicated_area;
 	
+	private List<String> target_codeList;
+	private String target_grade_no;
+	private String target_code;
 	
 	public String getComplex_name() {
 		return complex_name;
@@ -169,14 +173,29 @@ public class MyHomeDTO {
 	public void setDedicated_area(String dedicated_area) {
 		this.dedicated_area = dedicated_area;
 	}
-	
-	
-	
-	
-	
-	
-
-	
-	
+	public List<String> getTarget_codeList() {
+		return target_codeList;
+	}
+	public void setTarget_codeList(List<String> target_codeList) {
+		this.target_codeList = target_codeList;
+	}
+	public String getTarget_grade_no() {
+		return target_grade_no;
+	}
+	public void setTarget_grade_no(String target_grade_no) {
+		this.target_grade_no = target_grade_no;
+	}
+	public String getTarget_code() {
+		return target_code;
+	}
+	public void setTarget_code(String target_code) {
+		this.target_code = target_code;
+	}
+	public String getMove_date() {
+		return move_date;
+	}
+	public void setMove_date(String move_date) {
+		this.move_date = move_date;
+	}
 	
 }
