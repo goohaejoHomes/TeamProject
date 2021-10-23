@@ -132,12 +132,28 @@ public class MyHomeDAOImpl implements MyHomeDAO {
 
 	@Override
 	public int insertHome(MyHomeDTO myhomeDTO) {
+		int insertCnt = 0; 
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		System.out.println("MyHomeDAOImpl insertCnt => " + insertCnt);
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		int homeRegCnt = this.sqlSession.insert(
 				"com.project.erp.DAO.MyHomeDAO.insertHome"
 				,myhomeDTO
 		);
-		return homeRegCnt;
-				
+		int homeRegDetailCnt = this.sqlSession.insert(
+				"com.project.erp.DAO.MyHomeDAO.insertDetailHome"
+				,myhomeDTO
+		);
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		System.out.println("MyHomeDAOImpl homeRegCnt => " + homeRegCnt);
+		System.out.println("MyHomeDAOImpl homeRegDetailCnt => " + homeRegDetailCnt);
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		insertCnt = homeRegCnt + homeRegDetailCnt;
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		System.out.println("MyHomeDAOImpl insertCnt => " + insertCnt);
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		return insertCnt;
+
 	}
 	
 	public int insertHomeDetailCnt(MyHomeDTO myhomeDTO) {

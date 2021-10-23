@@ -35,6 +35,10 @@ public class MyHomeController {
 					,required=false
 					,defaultValue="0"
 					) String xxx
+			,@RequestParam(value="loc_no"	
+					,required=false
+					,defaultValue="0"
+					) int loc_no
 		) throws Exception {
 		System.out.println(myHomeSearchDTO.getTarget_code());
 		List<MyHomeDTO> locationList = this.myHomeDAO.getLocationList();
@@ -65,6 +69,7 @@ public class MyHomeController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("searchPage/searchMyHome.jsp");
 		mav.addObject("locationList", locationList);
+		mav.addObject("loc_no",loc_no);
 		mav.addObject("loc_detailList", loc_detailList);
 		mav.addObject("supply_typeList", supply_typeList);
 		mav.addObject("area_gradeList", area_gradeList);
@@ -155,7 +160,7 @@ public class MyHomeController {
 			, produces = "application/json;charset=UTF-8" 
 	)
 	@ResponseBody
-	public int checkMyHomeUpDelForm(
+	public Map<String,String> checkMyHomeUpDelForm(
 			//+++++++++++++++++++++++++++++++++++++++++++++++++
 			// 파라미터값을 저장할 [BoardDTO 객체]를 매개변수로 선언
 			//+++++++++++++++++++++++++++++++++++++++++++++++++
@@ -168,14 +173,25 @@ public class MyHomeController {
 			
 		) throws Exception {
 
-		System.out.println(myHomeDTO.getRental_no());
 		int myHomeUpDelCnt =0;
-		//----------------------------------------------------
-		//만약 게시판 수정 모드면 => 유효성 검사 필요
-		//수정 실행하고 수정 적용행의 개수 얻기
-		//----------------------------------------------------
+		//유효성 체크 에러 메시지를 저장할 변수 msg 선언
 		if(upDel.equals("up")) {
-			myHomeUpDelCnt = this.myHomeService.updateMyHome(myHomeDTO);
+			//----------------------------------------------------
+			
+			//----------------------------------------------------
+			//[ModelAndView 객체]에 유효성 체크 에러메시지 저장하기
+			//----------------------------------------------------
+			
+			//만약 msg안에 ""가 저장되어 있으면, 즉 유효성 체크를 통과했으면
+			
+				//수정 DB연동
+				//----------------------------------------------------
+				//[BoardServiceImpl 객체]의 updateBoard 메소드 호출로 
+				// 게시판 글 수정하고 [게시판 수정 적용행의 개수] 얻기
+				//----------------------------------------------------
+					// 결과가 1이면(한 행이 들어가면) 성공
+				//boardDTO에 파라미터값이 담겨있음
+				myHomeUpDelCnt = this.myHomeService.updateMyHome(myHomeDTO);
 				//System.out.println("boardUpdateCnt => "+ boardUpDelCnt); // DB연동 성공했는지 확인
 			
 		}
@@ -187,8 +203,7 @@ public class MyHomeController {
 			//[BoardServiceImpl 객체]의 deleteBoard 메소드 호출로
 			//삭제 실행하고 [삭제 적용행의 개수] 얻기
 			//----------------------------------------------------
-			System.out.println(myHomeDTO.getRental_no());
-			myHomeUpDelCnt = this.myHomeService.deleteMyHome(myHomeDTO);
+			myHomeUpDelCnt = this.myHomeDAO.deleteMyHome(myHomeDTO);
 		}
 
 		//*******************************************
@@ -197,11 +212,10 @@ public class MyHomeController {
 		// HashMap<String,String> 객체에 유효성 체크 시 메시지 저장하기
 		// HashMap<String,String> 객체 리턴하기
 		//*******************************************
-		System.out.println("Controller : "+ myHomeUpDelCnt);
-		return myHomeUpDelCnt;
-	}
-
-	
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("myHomeUpDelCnt", myHomeUpDelCnt+"");		
+		return map;
+	}	
 	
 	//---------------------------
 	// homeRegProc.do 접속 

@@ -60,5 +60,25 @@
         end}
 	</delete>
 	
+	<select id="getMapOutList" resultType="com.project.erp.DTO.MainInfoDTO">
+		select * from( select rownum RNUM,zxcvb.*from(
+				select 
+                    r.complex_name	"complex_name"
+                    ,r.rental_regdate	"rental_regdate"
+                    ,rd.rental_detail_no "rental_detail_no"
+                from 
+                    rental r, rental_detail rd
+                where 
+                1=1
+                and r.rental_no = rd.rental_no
+             	<if test="loc_no!=0">
+                   and r.loc_no=#{loc_no}
+                 </if>
+                order by 
+                	2 desc
+		) zxcvb <![CDATA[where rownum<=15) where RNUM>=1 ]]>
+	</select>
+	
+	
 </mapper> 
 

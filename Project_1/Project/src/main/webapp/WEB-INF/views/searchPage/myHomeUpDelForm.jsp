@@ -274,10 +274,22 @@ function checkMyHomeUpDelForm(upDel){
 		// 즉 응답 메시지 안의 html 소스가 문자열로써 익명함수의 매개변수로 들어온다.
 		// 응답 메시지 안의 html 소스는 boardRegProc.jsp의 실행 결과물이다.
 		//--------------------------------------------				
-		, success: function (myHomeUpDelCnt) {
+		, success: function (json) {
+			//-----------------------------------------
+			//JSON객체에서 유효성 체크 문자열 꺼내기
+			//JSON객체에서 수정/삭제 성공 행의 개수 꺼내기
+			//-----------------------------------------
+			var myHomeUpDelCnt = json.myHomeUpDelCnt;
+			myHomeUpDelCnt = parseInt(myHomeUpDelCnt,10);
 			
+			var msg = json.msg;
 			//====================================================
 			if(upDel=="up"){
+				
+				if(msg!=""&& msg.length>0){
+				alert(msg);
+				return;
+			}
 								
 				if(myHomeUpDelCnt == -1){
 					alert("모집공고가 삭제되었습니다.");

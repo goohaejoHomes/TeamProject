@@ -1,6 +1,7 @@
 package com.project.erp.Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.erp.DAO.LoginDAO;
 import com.project.erp.DAO.MainDAO;
 import com.project.erp.DTO.MemberDTO;
+import com.project.erp.DTO.MainInfoDTO;
 
 @Controller
 public class MainController {
@@ -38,10 +40,18 @@ public class MainController {
 	//---------------------------
 
 	@RequestMapping(value="/main.do")
-	public ModelAndView MainForm() {
-		
+	public ModelAndView MainForm(			
+			@RequestParam(value="loc_no"	
+			,required=false
+			,defaultValue="0"
+			)  int loc_no) {
+		List<MainInfoDTO> mapInfoOut = this.mainDAO.getMapOutList(loc_no);
+
+		System.out.println(mapInfoOut.size());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("mainPage/main.jsp");
+
+		mav.addObject("mapInfoOut", mapInfoOut);
 		return mav;
 	}
 
@@ -93,7 +103,7 @@ public class MainController {
 	public ModelAndView CheckRental() {
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("selfDiagnosis/CheckRental.jsp");
+		mav.setViewName("selfDiagnosis/checkRental.jsp");
 		return mav;
 		
 	}
